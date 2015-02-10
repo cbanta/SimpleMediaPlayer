@@ -1,0 +1,81 @@
+﻿<Window x:Name="theWindow" x:Class="MediaPlayer.Overlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Overlay" Height="400" Width="1000" Opacity="0.5" AllowsTransparency="True" 
+        WindowStyle="None" BorderThickness="0" ShowInTaskbar="False" SizeToContent="WidthAndHeight" 
+        Topmost="True" Background="Black">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="White"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <Style x:Key="MyButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="30"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="8" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top" HorizontalAlignment="Left">
+
+        <Button x:Name="btnLoad" Click="btnLoad_Click" Margin="30,30,60,30" Style="{DynamicResource MyButton}">
+            <Image Source="images/ios7-folder.png" Width="60"/>
+        </Button>
+        <Button x:Name="btnPlay" Click="btnPlay_Click" Style="{DynamicResource MyButton}">
+            <Image Source="images/play.png" Width="60"/>
+        </Button>
+        <Button x:Name="btnPause" Click="btnPause_Click" Style="{DynamicResource MyButton}">
+            <Image Source="images/pause.png" Width="60"/>
+        </Button>
+        <Button x:Name="btnRewind" Click="btnRewind_Click" Style="{DynamicResource MyButton}">
+            <Image Source="images/ios7-skipbackward.png" Width="60"/>
+        </Button>
+        <Button x:Name="btnExit" Click="btnExit_Click" Margin="60,30,60,30" Style="{DynamicResource MyButton}">
+            <Image Source="images/log-out.png" Width="60"/>
+        </Button>
+
+        <Button x:Name="btnProjOn" Style="{DynamicResource MyButton}" Click="btnProjOn_Click" Width="64" Height="64">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image Source="images/proj3.png" Width="50" Margin="0,-10,0,-15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Ellipse x:Name="uiProj1Status" Stroke="Black" StrokeThickness="1" Width="10" Height="10" Fill="White"></Ellipse>
+                    <Label Content="ON" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="14"/>
+                    <Ellipse x:Name="uiProj2Status" Stroke="Black" StrokeThickness="1" Width="10" Height="10" Fill="White"></Ellipse>
+                </DockPanel>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnProjOff" Style="{DynamicResource MyButton}" Click="btnProjOff_Click" Width="64" Height="64">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image Source="images/proj3.png" Width="50" Margin="0,-10,0,-15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label Content="OFF" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="14"/>
+                </DockPanel>
+            </StackPanel>
+        </Button>
+
+    </DockPanel>
+</Window>
